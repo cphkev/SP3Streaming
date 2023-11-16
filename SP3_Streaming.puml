@@ -1,5 +1,95 @@
 @startuml
 'https://plantuml.com/sequence-diagram
+!pragma layout smetana
+class Main
+class Media
+class Movie
+class Series
+class User
+class Login
+class FileReader
+class Menu
+class Scanner
 
-Object
+Main <-- Media
+Main <-- Menu
+Menu *-- Scanner
+Media *-- Movie
+Media *-- Series
+Media *-- FileReader
+Media *-- Scanner
+User <|-- Login
+User *-- Scanner
+
+Main : + static void main(string [] args)
+
+
+
+Login : -String inputUsername
+Login : -String inputPassword
+
+
+User : + User()
+User : -String username
+User : -String password
+User : -boolean Admin
+
+User : + void setUserName()
+User : + void setPassword()
+
+User : + String getUsername(String username)
+User : + String getPassword(String password)
+
+User : +void createUser(String usernamer,String password)
+User : "Tjek om input er lovligt(rigtig brug af tegn)"
+
+User : +void saveUserData(Arraylist<User> users)
+
+Menu : +void displayUserOptions()
+Menu : +void displayAdminOptions()
+Menu : +void createMovieOrSeries()
+Menu : +void displayMyList()
+Menu : "CreateUser: Skal det ind i et ArrayList eller txt.file?"
+Menu : +void displayWatchLater()
+Menu : +void displaySeries()
+Menu : +void displayMovies()
+Menu : +void displayByGenre()
+
+
+Media : +String createMedia()
+Media : +void displayallMoviesAndSeries()
+Media : +void displayaOptions()
+Media : +void removeMedia()
+Media : +void removeSeries()'
+Media : +void chooseMovie()
+Media : +void chooseSeries()
+
+Movie : -String genre
+Movie : -double rating
+Movie : -int year
+
+Movie : +String getMovie(String movie)
+Movie : +String getGenre(String genre)
+Movie : +double getRating(double rating)
+Movie : +int getYear(int year)
+
+Series : -String genre
+Series : -String season
+Series : -double rating
+Series : -int year
+
+
+Series : +void getSeries()
+Series : +String getGenre(String genre)
+Series : +String getSeason(String season)
+Series : +double getRating(double rating)
+Series : +int getYear(int year)
+
+
+
+
+
+
+
+
 @enduml
