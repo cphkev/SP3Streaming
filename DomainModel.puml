@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+object Main
+object Media
+object Movies
+object Series
+object User
+object Login
+object FileReader
+object Menu
+object Scanner
+
+
+
+Main *-- Media
+Main *-- Menu
+Menu *-- FileReader
+User *-- FileReader
+Media *--FileReader
+Movies *-- FileReader
+Series *-- FileReader
+
+Login *-- Scanner
+Menu *-- Scanner
+Media *-- Scanner
+
+
+
+Media <|-- Movies
+Media <|-- Series
+
+User <|-- Login
+
+
+
+
+
+
+
+
+
+
+
+@enduml
