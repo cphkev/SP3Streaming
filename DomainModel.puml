@@ -1,6 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-
+!pragma layout smetana
 object Main
 object Media
 object Movies
