@@ -135,6 +135,8 @@ abstract AUser{
 
 }
 
+Admin : AdminHandler
+
 Admin *-- AdminHandler
 class AdminHandler{
 
