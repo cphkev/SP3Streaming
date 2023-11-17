@@ -2,34 +2,53 @@
 'https://plantuml.com/sequence-diagram
 !pragma layout smetana
 class Main
-class Media
+interface Media
 class Movie
 class Series
 class User
 class Login
-class FileReader
+class AFileReader
 class Menu
-class Scanner
+class TextUI
+abstract AMedia
+interface FileReader
+class Streaming
 
-Main <-- Media
-Main <-- Menu
-Menu *-- Scanner
-Media <|-- Movie
-Media <|-- Series
+Media <|-- AMedia
+Main *-- Streaming
+Streaming *-- Login
+Streaming *-- Menu
+Streaming *-- Media
+Streaming *-- User
+
+FileReader *-- TextUI
+AMedia <|-- Movie
+AMedia <|-- Series
 Media *-- FileReader
-Media *-- Scanner
-User <|-- Login
-User *-- Scanner
+Media *-- TextUI
+User *-- TextUI
 
+FileReader <|-- AFileReader
 Main : + static void main(string [] args)
+
+class Streaming {
+- Menu menu
+-Media media
+-Login login
+-User user
+
+
+}
+
 
 
 
 Login : -String inputUsername
 Login : -String inputPassword
 
+FileReader : ArrayList<String> ReadFileData(String path)
+FileReader : String saveFileData(String path)
 
-User : + User()
 User : -String username
 User : -String password
 User : -boolean Admin
@@ -41,7 +60,7 @@ User : + String getUsername(String username)
 User : + String getPassword(String password)
 
 User : +void createUser(String usernamer,String password)
-User : "Tjek om input er lovligt(rigtig brug af tegn)"
+User : //Tjek om input er lovligt(rigtig brug af tegn)
 
 User : +void saveUserData(Arraylist<User> users)
 
@@ -55,35 +74,35 @@ Menu : +void displaySeries()
 Menu : +void displayMovies()
 Menu : +void displayByGenre()
 
+TextUI : -Scanner scan
+TextUI : + displayMsg()
+TextUI : +getInput(String msg)
 
 Media : +String createMedia()
 Media : +void displayallMoviesAndSeries()
 Media : +void displayaOptions()
 Media : +void removeMedia()
-Media : +void removeSeries()'
+Media : +void removeSeries()
 Media : +void chooseMovie()
 Media : +void chooseSeries()
 
-Movie : -String genre
-Movie : -double rating
-Movie : -int year
-
+AMedia : -String genre
+AMedia : -double rating
+AMedia : -int year
 Movie : +String getMovie(String movie)
-Movie : +String getGenre(String genre)
-Movie : +double getRating(double rating)
-Movie : +int getYear(int year)
 
-Series : -String genre
+AMedia : +String getGenre(String genre)
+AMedia : +double getRating(double rating)
+AMedia : +int getYear(int year)
+
+
 Series : -String season
-Series : -double rating
-Series : -int year
+
 
 
 Series : +void getSeries()
-Series : +String getGenre(String genre)
 Series : +String getSeason(String season)
-Series : +double getRating(double rating)
-Series : +int getYear(int year)
+
 
 
 
