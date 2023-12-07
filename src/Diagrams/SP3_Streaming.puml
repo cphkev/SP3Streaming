@@ -7,11 +7,11 @@ class Movie
 class Series
 interface User
 class Login
-class AFileReader
+
 class Menu
 class TextUI
 abstract AMedia
-interface FileReader
+interface IO
 class Streaming
 abstract AUser
 class Admin
@@ -33,8 +33,8 @@ AMedia <|-- Series
 
 
 Streaming *-- TextUI
-Streaming *-- FileReader
-FileReader <|-.- AFileReader
+Streaming *-- IO
+
 Main : + static void main(string [] args)
 
 class Streaming {
@@ -52,8 +52,8 @@ class Streaming {
 Login : -String inputUsername
 Login : -String inputPassword
 
-FileReader : ArrayList<String> ReadFileData(String path)
-FileReader : String saveFileData(String path)
+IO : ArrayList<String> ReadFileData(String path)
+IO : String saveFileData(String path)
 
 
 
@@ -70,7 +70,7 @@ class UserCreater{
 +createUser()
 }
 
-Streaming *-- FileIO
+IO <|-- FileIO
 class FileIO{
 +saveUserData()
 }

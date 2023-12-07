@@ -2,7 +2,7 @@ package Data;
 
 import java.util.ArrayList;
 
-public interface FileReader {
+public interface IO {
 
     ArrayList<String> fileData = new ArrayList<>();
 

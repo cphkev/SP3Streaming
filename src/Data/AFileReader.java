@@ -1,6 +1,6 @@
 package Data;
 
-public class AFileReader implements FileReader {
+public class AFileReader implements IO {
 
     public AFileReader() {
 

@@ -18,7 +18,7 @@ String name;
         this.rating = rating;
 
     }
-
+//Sut min tissemand mange gange
 
     public String getGenre() {
         return genre;
